@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.iweb.smartweb</groupId>
-    <artifactId>smartweb-hplus</artifactId>
+    <artifactId>smartweb-center</artifactId>
     <version>1.0-SNAPSHOT</version>
     <modules>
         <module>commons</module>
@@ -12,7 +12,7 @@
         <module>persistence</module>
         <module>service-api</module>
         <module>service</module>
-        <module>web-hplus</module>
+        <module>smartweb</module>
     </modules>
     <packaging>pom</packaging>
 
@@ -65,6 +65,12 @@
             <version>1.3</version>
             <scope>test</scope>
         </dependency>
+        <!-- 日志相关工具 -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombok.version}</version>
+        </dependency>
     </dependencies>
 
     <dependencyManagement>
@@ -106,11 +112,6 @@
                 <version>2.0.0</version>
             </dependency>
             <!-- 日志相关 begin-->
-            <dependency>
-                <groupId>org.projectlombok</groupId>
-                <artifactId>lombok</artifactId>
-                <version>${lombok.version}</version>
-            </dependency>
             <dependency>
                 <groupId>org.slf4j</groupId>
                 <artifactId>slf4j-api</artifactId>

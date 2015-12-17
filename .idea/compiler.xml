@@ -59,6 +59,13 @@
         <processorPath useClasspath="true" />
         <module name="persistence" />
       </profile>
+      <profile default="false" name="Annotation profile for smartweb" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="true" />
+        <module name="smartweb" />
+      </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="commons" target="1.6" />
@@ -66,6 +73,7 @@
       <module name="persistence-api" target="1.6" />
       <module name="service" target="1.6" />
       <module name="service-api" target="1.6" />
+      <module name="smartweb" target="1.6" />
       <module name="smartweb-center" target="1.6" />
       <module name="web-hplus" target="1.7" />
     </bytecodeTargetLevel>
