@@ -23,12 +23,18 @@
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
         <module name="smartweb-center" />
+      </profile>
+      <profile default="false" name="Annotation profile for web-hplus" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="true" />
         <module name="web-hplus" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="smartweb-center" target="1.5" />
-      <module name="web-hplus" target="1.5" />
+      <module name="web-hplus" target="1.7" />
     </bytecodeTargetLevel>
   </component>
 </project>
