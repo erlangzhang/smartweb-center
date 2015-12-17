@@ -2,8 +2,13 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/commons/commons.iml" filepath="$PROJECT_DIR$/commons/commons.iml" />
+      <module fileurl="file://$PROJECT_DIR$/persistence/persistence.iml" filepath="$PROJECT_DIR$/persistence/persistence.iml" />
+      <module fileurl="file://$PROJECT_DIR$/persistence-api/persistence-api.iml" filepath="$PROJECT_DIR$/persistence-api/persistence-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/service/service.iml" filepath="$PROJECT_DIR$/service/service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/service-api/service-api.iml" filepath="$PROJECT_DIR$/service-api/service-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/smartweb/smartweb.iml" filepath="$PROJECT_DIR$/smartweb/smartweb.iml" />
       <module fileurl="file://$PROJECT_DIR$/smartweb-center.iml" filepath="$PROJECT_DIR$/smartweb-center.iml" />
-      <module fileurl="file://$PROJECT_DIR$/web-hplus/web-hplus.iml" filepath="$PROJECT_DIR$/web-hplus/web-hplus.iml" />
     </modules>
   </component>
 </project>

@@ -4,6 +4,7 @@
     <entry_points version="2.0" />
   </component>
   <component name="FrameworkDetectionExcludesConfiguration">
+    <file type="web" url="file://$PROJECT_DIR$/smartweb" />
     <file type="web" url="file://$PROJECT_DIR$/web-hplus" />
   </component>
   <component name="MavenProjectsManager">
@@ -11,6 +12,7 @@
       <list>
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/web-hplus/pom.xml" />
+        <option value="$PROJECT_DIR$/smartweb/pom.xml" />
       </list>
     </option>
   </component>
