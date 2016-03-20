@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+	                       http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- 对象池 -->
+    <bean id="jedisPoolConfig" class="redis.clients.jedis.JedisPoolConfig">
+        <property name="maxTotal" value="#{app.redis_maxActive}"/>
+        <property name="maxIdle" value="#{app.redis_maxIdle}"/>
+        <property name="minIdle" value="#{app.redis_minIdle}"/>
+        <property name="maxWaitMillis" value="#{app.redis_maxWait}"/>
+        <property name="numTestsPerEvictionRun" value="#{app.redis_numTestsPerEvictionRun}"/>
+        <property name="testOnBorrow" value="#{app.redis_testOnBorrow}"/>
+        <property name="testOnReturn" value="#{app.redis_testOnReturn}"/>
+        <property name="testWhileIdle" value="#{app.redis_testWhileIdle}"/>
+        <property name="timeBetweenEvictionRunsMillis" value="#{app.redis_timeBetweenEvictionRunsMillis}"/>
+        <property name="softMinEvictableIdleTimeMillis" value="#{app.redis_softMinEvictableIdleTimeMillis}"/>
+    </bean>
+
+    <!-- 工厂实现 -->
+    <bean id="jedisConnectionFactory" class="org.springframework.data.redis.connection.jedis.JedisConnectionFactory">
+        <property name="hostName" value="${redis.host}" />
+        <property name="port" value="${redis.port}" />
+        <!-- <property name="password" value="${redis.pass}" />  -->
+        <property name="poolConfig" ref="jedisPoolConfig" />
+    </bean>
+
+    <!-- 模板类 -->
+    <bean id="redisTemplate" class="org.springframework.data.redis.core.RedisTemplate">
+        <property name="connectionFactory" ref="jedisConnectionFactory"/>
+        <property name="keySerializer">
+            <bean class="org.springframework.data.redis.serializer.StringRedisSerializer"/>
+        </property>
+        <property name="valueSerializer">
+            <bean class="org.springframework.data.redis.serializer.JdkSerializationRedisSerializer"/>
+        </property>
+    </bean>
+
+    <!--
+    <bean id="jedisPool" class="redis.clients.jedis.JedisPool">
+        <constructor-arg index="0" ref="jedisPoolConfig"/>
+        <constructor-arg index="1" value="#{app.redis_host}"/>
+        <constructor-arg index="2" value="#{app.redis_port}" type="int"/>
+        <constructor-arg index="3" value="#{app.redis_timeout}" type="int"/>
+    </bean>
+
+    <bean id="jedisPoolRandom" class="redis.clients.jedis.JedisPool">
+        <constructor-arg index="0" ref="jedisPoolConfig"/>
+        <constructor-arg index="1" value="#{app.redis_host}"/>
+        <constructor-arg index="2" value="#{app.redis_port}" type="int"/>
+        <constructor-arg index="3" value="#{app.redis_timeout}" type="int"/>
+    </bean>
+    -->
+</beans>

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <!-- 当前环境 -->
+    <group name="env">
+        <property name="env" defaultValue="dev" description="当前环境"/>
+    </group>
+    <!-- 日志配置 -->
+    <group name="logger">
+        <property name="logLevel" defaultValue="DEBUG" description="日志级别"/>
+        <property name="logAdditivity" defaultValue="true" description="日志相加性(rootLogger是否有效)"/>
+        <property name="logDefaultFile" defaultValue="STDOUT" description="日志输出模式"/>
+        <property name="logRoot" defaultValue="${user.home}/logs/smartweb" description="日志路径"/>
+        <property name="logOutPutMode_persistence" defaultValue="console_appender" description="日志模式"/>
+        <property name="FLUME_HOST_LIST" defaultValue="null" description="flume主机列表"/>
+    </group>
+    <!-- 地址配置 -->
+    <group name="host">
+        <property name="cache_reload" defaultValue="127.0.0.1" description="cache_reload"/>
+    </group>
+    <!-- dubbo配置 -->
+    <group name="dubbo">
+        <property name="zookeeper_address" defaultValue="127.0.0.1:2181" description="ZK地址"/>
+        <property name="dubbo_port_persistence" defaultValue="20880" description="dubbo端口"/>
+        <property name="private_version" defaultValue="1.0" description="接口版本"/>
+    </group>
+    <!-- 数据库配置 -->
+    <group name="database">
+        <property name="jdbcDriver" defaultValue="com.mysql.jdbc.Driver" description="jdbc驱动"/>
+        <property name="jdbcUrl" defaultValue="jdbc:mysql://localhost:3306/shiro" description="地址"/>
+        <property name="jdbcUsername" defaultValue="root" description="用户名"/>
+        <property name="jdbcPassword" defaultValue="123456" description="密码"/>
+        <property name="jdbcAcquireIncrement" defaultValue="3" description="获取连接数"/>
+        <property name="jdbcAcquireRetryAttempts" defaultValue="30" description="重连次数"/>
+        <property name="jdbcAcquireRetryDelay" defaultValue="1000" description="重连间隔"/>
+        <property name="jdbcCheckoutTimeout" defaultValue="30000" description="超时时间"/>
+        <property name="jdbcInitialPoolSize" defaultValue="20" description="初始化连接池大小"/>
+        <property name="jdbcMaxIdleTime" defaultValue="0" description="最大空闲时间"/>
+        <property name="jdbcMinPoolSize" defaultValue="20" description="最小连接个数"/>
+        <property name="jdbcMaxPoolSize" defaultValue="100" description="最大连接个数"/>
+        <property name="taskjdbcMaxPoolSize" defaultValue="50" description="补单连接池最大连接数"/>
+        <property name="jdbcMaxStatements" defaultValue="150" description="最大Statements"/>
+        <property name="jdbcMaxStatementsPerConnection" defaultValue="0" description="最大缓存statements数"/>
+        <property name="jdbcNumHelperThreads" defaultValue="30" description="多线程操作"/>
+        <property name="jdbcIdleConnectionTestPeriod" defaultValue="300" description="检查空闲连接"/>
+        <property name="jdbcPreferredTestQuery" defaultValue="select sysdate from dual" description="连接测试查询"/>
+    </group>
+    <!-- redis配置 -->
+    <group name="redis">
+        <property name="mode" defaultValue="dev" description="redis环境"/>
+        <property name="redis_clusterName" defaultValue="redis" description="redis集群名"/>
+        <property name="redis_host" defaultValue="127.0.0.1" description="redis地址"/>
+        <property name="redis_port" defaultValue="6379" description="redis端口"/>
+        <property name="redisRandom_clusterName" defaultValue="null" description="redisRandom集群名"/>
+        <property name="redisRandom_host52" defaultValue="null" description="redisRandom地址"/>
+        <property name="redisRandom_port" defaultValue="null" description="redisRandom端口"/>
+        <property name="redis_timeout" defaultValue="100000" description="超时时间"/>
+        <property name="redis_maxActive" defaultValue="35" description="最大连接数"/>
+        <property name="redis_maxIdle" defaultValue="10" description="最大空闲数"/>
+        <property name="redis_maxWait" defaultValue="1000" description="最大建立连接等待时间"/>
+        <property name="redis_testOnBorrow" defaultValue="true" description=""/>
+        <property name="redis_softMinEvictableIdleTimeMillis" defaultValue="100000" description=""/>
+        <property name="redis_minIdle" defaultValue="5" description="允许最小空闲对象数"/>
+        <property name="redis_numTestsPerEvictionRun" defaultValue="1" description=""/>
+        <property name="redis_testOnReturn" defaultValue="true" description="指明是否在归还到池中前进行检验"/>
+        <property name="redis_testWhileIdle" defaultValue="true" description=""/>
+        <property name="redis_timeBetweenEvictionRunsMillis" defaultValue="120000" description=""/>
+    </group>
+
+    <!-- 文件生成配置 -->
+    <script>
+        <generate template="app-env.properties.vm" destfile="app-env.properties" charset="UTF-8"/>
+        <generate template="logback.xml.vm" destfile="logback.xml" charset="UTF-8"/>
+        <generate template="spring-redis.xml.vm" destfile="spring/spring-redis.xml" charset="UTF-8"/>
+    </script>
+</config>

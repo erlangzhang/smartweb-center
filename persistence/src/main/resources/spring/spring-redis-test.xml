@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+	                       http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="jedisPoolConfig" class="redis.clients.jedis.JedisPoolConfig">
+        <property name="maxTotal" value="#{app.redis_maxActive}"/>
+        <property name="maxIdle" value="#{app.redis_maxIdle}"/>
+        <property name="minIdle" value="#{app.redis_minIdle}"/>
+        <property name="maxWaitMillis" value="#{app.redis_maxWait}"/>
+        <property name="numTestsPerEvictionRun" value="#{app.redis_numTestsPerEvictionRun}"/>
+        <property name="testOnBorrow" value="#{app.redis_testOnBorrow}"/>
+        <property name="testOnReturn" value="#{app.redis_testOnReturn}"/>
+        <property name="testWhileIdle" value="#{app.redis_testWhileIdle}"/>
+        <property name="timeBetweenEvictionRunsMillis" value="#{app.redis_timeBetweenEvictionRunsMillis}"/>
+        <property name="softMinEvictableIdleTimeMillis" value="#{app.redis_softMinEvictableIdleTimeMillis}"/>
+    </bean>
+
+    <bean id="jedisPool" class="redis.clients.jedis.JedisSentinelPool">
+        <constructor-arg index="0" value="#{app.redis_clusterName}" />
+        <constructor-arg index="1">
+            <set>
+                <value>#{app.redis_host}:#{app.redis_port}</value>
+            </set>
+        </constructor-arg>
+        <constructor-arg index="2" ref="jedisPoolConfig"/>
+        <constructor-arg index="3" value="#{app.redis_timeout}" type="int"/>
+    </bean>
+    <bean id="jedisPoolRandom" class="redis.clients.jedis.JedisSentinelPool">
+        <constructor-arg index="0" value="#{app.redis_clusterName}" />
+        <constructor-arg index="1">
+            <set>
+                <value>#{app.redis_host}:#{app.redis_port}</value>
+            </set>
+        </constructor-arg>
+        <constructor-arg index="2" ref="jedisPoolConfig"/>
+        <constructor-arg index="3" value="#{app.redis_timeout}" type="int"/>
+    </bean>
+</beans>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans.xsd
+                           http://code.alibabatech.com/schema/dubbo
+                           http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+    <dubbo:application name="engine-provider"/>
+
+    <dubbo:registry address="zookeeper://#{app.zookeeper_address}"/>
+
+    <dubbo:protocol name="dubbo" port="#{app.dubbo_port}"/>
+
+    <dubbo:provider id="persistence_provider" threads="500"/>
+
+    <!-- 监控中心配置 -->
+    <dubbo:monitor protocol="registry" />
+
+    <!-- which service interface do we expose -->
+    <dubbo:service version="#{app.private_version}" interface="com.iweb.smartweb.persistence.dao.UserInfoDao" ref=""/>
+</beans>

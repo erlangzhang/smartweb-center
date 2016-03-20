@@ -1,0 +1,82 @@
+#dubbo配置
+zookeeper_address=${zookeeper_address}
+dubbo_port=${dubbo_port_persistence}
+private_version=${private_version}
+cache_reload=${cache_reload}
+
+##### jdbc properties begin ########
+jdbcDriver=${jdbcDriver}
+jdbcUrl=${jdbcUrl}
+jdbcUsername=${jdbcUsername}
+jdbcPassword=${jdbcPassword}
+#<!--当连接池中的连接耗尽的时候c3p0一次同时获取的连接数。Default: 3 -->
+jdbcAcquireIncrement=${jdbcAcquireIncrement}
+#<!--定义在从数据库获取新连接失败后重复尝试的次数。Default: 30 -->
+jdbcAcquireRetryAttempts=${jdbcAcquireRetryAttempts}
+#<!--两次连接中间隔时间，单位毫秒。Default: 1000 -->
+jdbcAcquireRetryDelay=${jdbcAcquireRetryDelay}
+#<!--当连接池用完时客户端调用getConnection()后等待获取新连接的时间，超时后将抛出SQLException,如设为0则无限期等待。
+#单位毫秒。Default: 0 -->
+jdbcCheckoutTimeout=${jdbcCheckoutTimeout}
+#<!--初始化时获取三个连接，取值应在minPoolSize与maxPoolSize之间。Default: 3 -->
+jdbcInitialPoolSize=${jdbcInitialPoolSize}
+#<!--最大空闲时间,60秒内未使用则连接被丢弃。若为0则永不丢弃。
+#单位：秒 Default: 0 -->
+jdbcMaxIdleTime=${jdbcMaxIdleTime}
+#<!--连接池中保留的最大连接数。Default: 15 -->
+jdbcMinPoolSize=${jdbcMinPoolSize}
+jdbcMaxPoolSize=${jdbcMaxPoolSize}
+#<!--查询补单连接池中保留的最大连接数 -->
+taskjdbcMaxPoolSize=${taskjdbcMaxPoolSize}
+#<!--JDBC的标准参数，用以控制数据源内加载的PreparedStatements数量。但由于预缓存的statements
+#属于单个connection而不是整个连接池。所以设置这个参数需要考虑到多方面的因素。
+#如果maxStatements与maxStatementsPerConnection均为0，则缓存被关闭。Default: 0-->
+jdbcMaxStatements=${jdbcMaxStatements}
+#<!--maxStatementsPerConnection定义了连接池内单个连接所拥有的最大缓存statements数。Default: 0 -->
+jdbcMaxStatementsPerConnection=${jdbcMaxStatementsPerConnection}
+#<!--c3p0是异步操作的，缓慢的JDBC操作通过帮助进程完成。扩展这些操作可以有效的提升性能
+#通过多线程实现多个操作同时被执行。Default: 3-->
+jdbcNumHelperThreads=${jdbcNumHelperThreads}
+#<!--每60秒检查所有连接池中的空闲连接。单位：秒 Default: 0 -->
+jdbcIdleConnectionTestPeriod=${jdbcIdleConnectionTestPeriod}
+#<!--定义所有连接测试都执行的测试语句。在使用连接测试的情况下这个一显著提高测试速度。注意：
+#测试的表必须在初始数据源的时候就存在。Default: null-->
+jdbcPreferredTestQuery=${jdbcPreferredTestQuery}
+##### jdbc properties end ########
+
+#redisConfig
+redis_clusterName=${redis_clusterName}
+#redis的服务器地址
+redis_host=${redis_host}
+#redis的服务端口
+redis_port=${redis_port}
+
+redisRandom_clusterName=${redisRandom_clusterName}
+#redis的服务器地址
+redisRandom_host52=${redisRandom_host52}
+#redis的服务端口
+redisRandom_port=${redisRandom_port}
+#客户端超时时间单位是毫秒
+redis_timeout=${redis_timeout}
+#最大连接数
+redis_maxActive=${redis_maxActive}
+#最大空闲数
+redis_maxIdle=${redis_maxIdle}
+#最大建立连接等待时间
+redis_maxWait=${redis_maxWait}
+#指明是否在从池中取出连接前进行检验,如果检验失败,则从池中去除连接并尝试取出另一个
+redis_testOnBorrow=${redis_testOnBorrow}
+#被空闲对象回收器回收前在池中保持空闲状态的最小时间毫秒数,
+#redis.minEvictableIdleTimeMillis=100000
+#同minEvictableIdleTimeMillis，但是前提空闲数大于minIdle，推荐使用
+redis_softMinEvictableIdleTimeMillis=${redis_softMinEvictableIdleTimeMillis}
+#允许最小空闲对象数
+redis_minIdle=${redis_minIdle}
+#设定在进行后台对象清理时，每次检查对象数
+redis_numTestsPerEvictionRun=${redis_numTestsPerEvictionRun}
+#指明是否在归还到池中前进行检验
+redis_testOnReturn=${redis_testOnReturn}
+##指明连接是否被空闲连接回收器(如果有)进行检验.如果检测失败,则连接将被从池中去除.
+redis_testWhileIdle=${redis_testWhileIdle}
+#在空闲连接回收器线程运行期间休眠的时间毫秒数. 如果设置为非正数,则不运行空闲连接回收器线程
+redis_timeBetweenEvictionRunsMillis=${redis_timeBetweenEvictionRunsMillis}
